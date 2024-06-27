@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="Width=device-width , initial-scale=1.0">
+<title>Guess the number</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div class="matrix"></div>
+<script>
+const columns = Math.floor(window.innerWidth / 20);
+const matrix = document.querySelector('.matrix');
+
+for (let i = 0; i < columns; i++) {
+const column = document.createElement('div');
+matrix.appendChild(column);
+
+const rows = Math.floor(window.innerHeight / 20);
+for (let j = 0; j < rows; j++) {
+const number = document.createElement('span');
+number.textContent = Math.floor(Math.random() * 10);
+column.appendChild(number);
+}
+}
+setInterval(() => {
+document.querySelectorAll('.matrix span').forEach(number => {
+number.textContent = Math.floor(Math.random() * 10);
+});
+}, 100);
+</script>
+<div class="container">
+<div class = "title">
+<h1 id="text">GUESS YOUR NUMBER</h1>
+</div>
+<div class="interface">
+<div class="Indicator">
+<div class="rectangle">
+<div id="Servercomand">
+<h2 id="result"></h2>
+</div>
+<div class="pack">
+<div class="input">
+<label for="Yourguess">Enter your guess : </label>
+<input type="number" id="guess" name="guess">
+</div>
+</div>
+<div class="image">
+<img class="mySlides" src="zeroquestion.jpg">
+<img class="mySlides" src="singlequestion.jpg">
+<img class="mySlides" src="doublequestion.jpg">
+<img class="mySlides" src="triplequestion.jpg">
+</div>
+<script>
+var myIndex = 0;
+carousel();
+
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  myIndex++;
+  if (myIndex > x.length) {myIndex = 1}    
+  x[myIndex-1].style.display = "block";  
+  setTimeout(carousel, 333);
+}
+</script>
+</div>
+<div class="circle"></div>
+<div class="needlebase">
+<div id="show">
+<p id="display"></p>
+</div>
+</div>
+<div id="needle"></div>
+</div>
+<div class="button">
+<button id="mybtn" onclick="myFunction()">Submit guess</button>
+<script src="javascript.js">
+</script>
+</div>
+</div>
+
+
+ 
